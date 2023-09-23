@@ -21,9 +21,4 @@ public interface UsuarioService {
     boolean confirmarRegistro(String token);
 
     void crearPasswordResetTokenParaUsuario(Usuario usuario, String token); // permite crear un token para resetear la contraseña de un usuario.
-
-    String validarPasswordResetToken(Long id, String token, String password); // permite validar el token para resetear la contraseña.
-
-    void cambiarUsuarioPassword(Usuario usuario, String password); // permite cambiar la contraseña de un usuario.
-
 }
