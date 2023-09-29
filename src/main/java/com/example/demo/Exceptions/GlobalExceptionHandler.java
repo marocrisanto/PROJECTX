@@ -34,4 +34,8 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
     }
 
+    @ExceptionHandler(UsuarioNoEncontradoException.class)
+    public ResponseEntity<String> HandlerEventoNoEncontrado(UsuarioNoEncontradoException e){
+        return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+    }
 }

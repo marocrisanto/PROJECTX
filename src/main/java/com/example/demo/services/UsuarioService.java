@@ -10,7 +10,7 @@ public interface UsuarioService {
 
     List<Usuario> obtenerTodosLosUsuarios();
 
-    Optional<Usuario> obtenerUsuarioPorId(Long id);
+    Optional<Usuario> obtenerUsuarioPorId(Long id) throws Exception;
 
     Usuario guardarUsuario(Usuario usuario);
 
