@@ -29,9 +29,13 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
     }
 
-    @ExceptionHandler(NoEncontradaException.class)
-    public ResponseEntity<String> HandleEventoNoEncontrado(CitaYaExistenteException e) {
+    @ExceptionHandler(EventoNoEncontradoException.class)
+    public ResponseEntity<String> HandleEventoNoEncontrado(EventoNoEncontradoException e) {
         return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
     }
 
+    @ExceptionHandler(UsuarioNoEncontradoException.class)
+    public ResponseEntity<String> HandlerEventoNoEncontrado(UsuarioNoEncontradoException e){
+        return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+    }
 }

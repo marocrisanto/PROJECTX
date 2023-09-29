@@ -29,7 +29,7 @@ public class UsuarioController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Usuario> obtenerUsuarioPorId(@PathVariable Long id){
+    public ResponseEntity<Usuario> obtenerUsuarioPorId(@PathVariable Long id) throws Exception {
         Optional<Usuario> usuarioOptional = usuarioService.obtenerUsuarioPorId(id);
         return new ResponseEntity<>(usuarioOptional.get(), HttpStatus.OK);
     }
@@ -41,7 +41,7 @@ public class UsuarioController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Usuario> actualizarUsuario(@PathVariable Long id, @RequestBody Usuario usuario){
+    public ResponseEntity<Usuario> actualizarUsuario(@PathVariable Long id, @RequestBody Usuario usuario) throws Exception {
         usuarioService.obtenerUsuarioPorId(id);
         usuario.setId(id);
         Usuario usuarioActualizado = usuarioService.guardarUsuario(usuario);

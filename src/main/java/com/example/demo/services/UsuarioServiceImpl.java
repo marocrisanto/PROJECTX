@@ -1,5 +1,7 @@
 package com.example.demo.services;
 
+import com.example.demo.Exceptions.NoEncontradaException;
+import com.example.demo.Exceptions.UsuarioNoEncontradoException;
 import com.example.demo.model.Usuario;
 import com.example.demo.repository.PasswordRepository;
 import com.example.demo.repository.UsuarioRepository;
@@ -25,13 +27,19 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
 
     @Override
-    public Optional<Usuario> obtenerUsuarioPorId(Long id){
-        return usuarioRepository.findById(id);
+    public Optional<Usuario> obtenerUsuarioPorId(Long id) throws Exception {
+        Optional<Usuario> usuarioARetornar = usuarioRepository.findById(id);
+        if (usuarioARetornar.isPresent()){
+            return usuarioARetornar;
+        } else {
+            throw new UsuarioNoEncontradoException("Usuario no encontrado con el id " + id);
+        }
     }
 
 
     public Usuario guardarUsuario(Usuario usuario){
-        return usuarioRepository.save(usuario);
+        Usuario usuarioAregresar = usuarioRepository.save(usuario);
+        return usuarioAregresar;
     }
 
     @Override
