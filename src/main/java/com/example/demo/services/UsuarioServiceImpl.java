@@ -7,18 +7,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
-import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
 @Service
 public class UsuarioServiceImpl implements UsuarioService {
 
+
+
     @Autowired
     private UsuarioRepository usuarioRepository;
 
-    @Autowired
-    private PasswordRepository passwordResetTokenRepository;
 
     @Override
     public List<Usuario> obtenerTodosLosUsuarios(){
@@ -45,25 +44,4 @@ public class UsuarioServiceImpl implements UsuarioService {
         return usuarioRepository.findByEmail(email);
     }
 
-    @Override
-    public boolean confirmarRegistro(String token) {
-        Optional<Usuario> usuario = usuarioRepository.findByConfirmationToken(token);
-        if (usuario.isEmpty()) {
-            // no se encontro ningun usuario con el token proporcionado
-            return false;
-        }
-        Usuario usuarioAconfirmar = usuario.get();
-        usuarioAconfirmar.setEnabled(true);
-        usuarioAconfirmar.setConfirmationToken(null);
-        usuarioRepository.save(usuarioAconfirmar);
-        return true;
-    }
-
-
-    @Override
-    @Transactional
-    public void crearPasswordResetTokenParaUsuario(Usuario usuario, String token) {
-        PasswordResetTokenImpl myToken = new PasswordResetTokenImpl(token, usuario);
-        passwordResetTokenRepository.save(myToken);
-    }
 }

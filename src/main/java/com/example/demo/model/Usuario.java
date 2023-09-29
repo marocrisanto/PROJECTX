@@ -24,14 +24,11 @@ public class Usuario {
     @Column(name = "password")
     private String password;
 
-    @Column
-    private String confirmationToken;
-
     @Column(name = "rol")
     private String rol; // Podría ser 'owner', 'admin', 'empleado', o 'cliente'
     //Owner =  soy yo como desarrollador
-    //admin = el cliente (algun otro desarrollador o empleado backend)
-    //admin = el cliente (Ej. higinio)
+    //admin =  el cliente (algún otro desarrollador o empleado backend)
+    //admin = el cliente (Ej. Higinio)
     //empleado = sus empleados
 
     @Column
@@ -89,15 +86,9 @@ public class Usuario {
         this.enabled = enabled;
     }
 
-    public String getConfirmationToken() {
-        return confirmationToken;
-    }
 
     public boolean isEnabled() {
         return enabled;
     }
 
-    public void setConfirmationToken(String confirmationToken) {
-        this.confirmationToken = confirmationToken;
-    }
 }

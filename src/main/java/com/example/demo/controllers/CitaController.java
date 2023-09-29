@@ -18,6 +18,7 @@ public class CitaController {
 
     @Autowired
     public CitaController(CitaService citaService) {
+
         this.citaService = citaService;
     }
 
@@ -40,19 +41,6 @@ public class CitaController {
             Cita nuevaCita = citaService.guardarCita(cita);
             return new ResponseEntity<>(nuevaCita, HttpStatus.CREATED);
         } catch (Exception e) {
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
-
-    // Actualizar una cita existente
-    @PutMapping("/{id}")
-    public ResponseEntity<Cita> actualizarCita(@PathVariable Long id, @RequestBody Cita cita) {
-        try {
-            citaService.obtenerCitaPorId(id);
-            cita.setId(id);
-            Cita citaActualizada = citaService.guardarCita(cita);
-            return new ResponseEntity<>(citaActualizada, HttpStatus.OK);
-        } catch (Exception e){
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

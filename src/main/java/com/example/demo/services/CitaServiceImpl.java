@@ -1,7 +1,7 @@
 package com.example.demo.services;
 
 import com.example.demo.Exceptions.CitaFechaEnPasadoException;
-import com.example.demo.Exceptions.CitaNoEncontradaException;
+import com.example.demo.Exceptions.NoEncontradaException;
 import com.example.demo.Exceptions.CitaYaExistenteException;
 import com.example.demo.model.Cita;
 import com.example.demo.repository.CitaRepository;
@@ -27,7 +27,7 @@ public class CitaServiceImpl implements CitaService {
 
     @Override
     public Cita obtenerCitaPorId(Long id) {
-        return citaRepository.findById(id).orElseThrow(() -> new CitaNoEncontradaException("Cita no encontrada con id: " + id));
+        return citaRepository.findById(id).orElseThrow(() -> new NoEncontradaException("Cita no encontrada con id: " + id));
 
     }
 
@@ -55,14 +55,14 @@ public class CitaServiceImpl implements CitaService {
 
     @Override
     public void confirmarCita(Long id) {
-        Cita cita = citaRepository.findById(id).orElseThrow(() -> new CitaNoEncontradaException("Cita no encontrada con id: "+ id));
+        Cita cita = citaRepository.findById(id).orElseThrow(() -> new NoEncontradaException("Cita no encontrada con id: "+ id));
         cita.setConfirmada(true);
         citaRepository.save(cita);
     }
 
     @Override
     public void cancelarCita(Long id) throws Exception{
-        Cita cita = citaRepository.findById(id).orElseThrow(()-> new CitaNoEncontradaException("Cita no encontrada con id: "+ id));
+        Cita cita = citaRepository.findById(id).orElseThrow(()-> new NoEncontradaException("Cita no encontrada con id: "+ id));
         cita.setCancelada(true);
         citaRepository.save(cita);
     }

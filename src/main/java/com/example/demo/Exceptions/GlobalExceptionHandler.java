@@ -14,8 +14,24 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(CitaNoEncontradaException.class)
-    public ResponseEntity<String> HandleCitaNoEncontrada (CitaNoEncontradaException e){
+    @ExceptionHandler(CitaFechaEnPasadoException.class)
+    public ResponseEntity<String> HandleFechaEnPasado(CitaFechaEnPasadoException e) {
         return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
     }
+
+    @ExceptionHandler(NoEncontradaException.class)
+    public ResponseEntity<String> HandleCitaNoEncontrada(NoEncontradaException e) {
+        return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(CitaYaExistenteException.class)
+    public ResponseEntity<String> HandleCitaYaExistente(CitaYaExistenteException e) {
+        return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(NoEncontradaException.class)
+    public ResponseEntity<String> HandleEventoNoEncontrado(CitaYaExistenteException e) {
+        return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+    }
+
 }

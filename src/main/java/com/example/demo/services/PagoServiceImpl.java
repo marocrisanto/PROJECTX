@@ -4,10 +4,11 @@ import com.example.demo.model.Fotografia;
 import com.example.demo.model.Pago;
 import com.example.demo.repository.PagoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-
+@Service
 public class PagoServiceImpl implements PagoService{
 
     //Inyectamos fotografiaRepository usando Autowired para usar las operaciones CRUD del repositorio

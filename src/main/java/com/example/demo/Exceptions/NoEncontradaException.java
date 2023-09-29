@@ -1,7 +1,8 @@
 package com.example.demo.Exceptions;
 
-public class CitaNoEncontradaException extends RuntimeException{
-    public CitaNoEncontradaException(String message){
+public class    NoEncontradaException extends RuntimeException{
+    public NoEncontradaException(String message){
+
         super(message);
     }
 }

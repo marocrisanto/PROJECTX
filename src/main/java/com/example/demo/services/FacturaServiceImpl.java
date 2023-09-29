@@ -38,5 +38,4 @@ public class FacturaServiceImpl implements FacturaService{
     public void borrarFactura(Long id){
         facturaRepository.deleteById(id);
     }
-
 }
